@@ -4,13 +4,14 @@ import connectDb from '../db.connect'
  * @param {*} id
  * @returns
  */
-export async function getUser (id) {
-  try {
-    const result = await connectDb({ sql: 'SELECT username, role FROM users WHERE id=?', params: id })
-    return result
-  } catch (error) {
-    console.log(error)
+export async function getUserBy (userby) {
+  const query = {
+    id: 'SELECT username, role, password FROM users WHERE id = ?',
+    username: 'SELECT id, password, role FROM users WHERE username = ?'
   }
+
+  const result = await connectDb({ sql: query[userby], params: userby })
+  return result
 }
 /**
  *
@@ -18,18 +19,14 @@ export async function getUser (id) {
  * @returns
  */
 export async function createUser ({ username, password, role, avatar }) {
-  try {
-    const result = await connectDb(
-      {
-        sql: `INSERT INTO users (username, password, role, avatar) 
+  const result = await connectDb(
+    {
+      sql: `INSERT INTO users (username, password, role, avatar) 
               VALUES (?,?,?,?,?,?,?,?)`,
-        params: [username, password, role, avatar]
-      }
-    )
-    return result
-  } catch (error) {
-    console.log(error)
-  }
+      params: [username, password, role, avatar]
+    }
+  )
+  return result
 }
 /**
  *
@@ -37,27 +34,19 @@ export async function createUser ({ username, password, role, avatar }) {
  * @returns
  */
 export async function deleteUser (id) {
-  try {
-    const result = await connectDb({ sql: 'DELETE FROM users where id=?', params: [id] })
-    return result
-  } catch (error) {
-    console.log(error)
-  }
+  const result = await connectDb({ sql: 'DELETE FROM users where id=?', params: [id] })
+  return result
 }
 /**
  *
  * @param {*} param0
  * @returns
  */
-export async function updateUser ({ users }) {
-  try {
-    const result = await connectDb(
-      {
-        sql: 'UPDATE users SET username = ?, password = ?, role = ?, avatar = ? WHERE id = ?',
-        params: [users.username, users.password, users.role, users.avatar, users.id]
-      })
-    return result
-  } catch (error) {
-    console.log(error)
-  }
+export async function updateUser ({ username, password, role, avatar, id }) {
+  const result = await connectDb(
+    {
+      sql: 'UPDATE users SET username = ?, password = ?, role = ?, avatar = ? WHERE id = ?',
+      params: [username, password, role, avatar, id]
+    })
+  return result
 }
