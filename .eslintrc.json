@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node": true
     },
     "extends": [
         "standard"
@@ -11,7 +12,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "semi":["error", "never"],
-        "no-unused-vars":"warn"
+        "no-unused-vars":"warn",
+        "semi": ["error", "never"]
     }
 }
