@@ -1,5 +1,4 @@
-import dotenv from 'dotenv'
-dotenv.config({ path: '../../.env.local' })
+import 'dotenv/config.js'
 
 const env = process.env
 export const generalConfig = {

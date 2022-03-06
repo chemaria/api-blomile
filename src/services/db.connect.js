@@ -1,7 +1,7 @@
 import mysql2 from 'mysql2/promise'
 import { configDb } from '../configs/config.db.js'
 
-export async function connectDb ({ sql, params = [] }) {
+export default async function connectDb ({ sql, params = [] }) {
   try {
     const connection = await mysql2.createConnection({
       host: configDb.host,

@@ -1,4 +1,4 @@
-import * as userService from '../../services/servicesUser/user.query'
+import * as userService from '../../services/servicesUser/user.query.js'
 
 export async function get (req, res, next) {
   try {

@@ -1,4 +1,4 @@
-import connectDb from '../db.connect'
+import connectDb from '../db.connect.js'
 /**
  *
  * @param {*} param0

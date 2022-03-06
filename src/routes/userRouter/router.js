@@ -1,11 +1,11 @@
 import express from 'express'
-import * as userController from '../../controllers/userController/user.controller'
+import * as userController from '../../controllers/userController/user.controller.js'
 
-export const router = express.Router()
+export const userRouter = express.Router()
 
-router.get('/user/:id', userController.get)
+userRouter.get('/:id', userController.get)
 // list all users?
 // router.get('/user/', userController.)
-router.post('/user', userController.create)
-router.put('/user', userController.update)
-router.delete('/user', userController.remove)
+userRouter.post('/', userController.create)
+userRouter.put('/', userController.update)
+userRouter.delete('/', userController.remove)

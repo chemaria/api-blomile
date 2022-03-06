@@ -1,4 +1,4 @@
-import * as postService from '../../services/servicesPost/post.query'
+import * as postService from '../../services/servicesPost/post.query.js'
 
 export async function getPost (req, res, next) {
   try {

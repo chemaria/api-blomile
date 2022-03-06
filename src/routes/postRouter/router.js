@@ -1,10 +1,10 @@
 import express from 'express'
-import * as postController from '../../controllers/postController/post.controller'
+import * as postController from '../../controllers/postController/post.controller.js'
 
-export const router = express.Router()
+export const postRouter = express.Router()
 
-router.get('/post/:id', postController.getPost)
-router.get('/post/', postController.getAllPosts)
-router.post('/post', postController.create)
-router.put('/post', postController.update)
-router.delete('/post', postController.remove)
+postRouter.get('/:id', postController.getPost)
+postRouter.get('/', postController.getAllPosts)
+postRouter.post('/', postController.create)
+postRouter.put('/', postController.update)
+postRouter.delete('/', postController.remove)
