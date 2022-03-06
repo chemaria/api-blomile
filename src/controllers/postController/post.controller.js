@@ -2,7 +2,7 @@ import * as postService from '../../services/servicesPost/post.query.js'
 
 export async function getPost (req, res, next) {
   try {
-    res.json(await postService.getPost(req.query.id))
+    res.json(await postService.getPost(req.params.id))
   } catch (error) {
     console.error('error getting posts data', error.message)
     next(error)

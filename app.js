@@ -1,9 +1,7 @@
-import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import express from 'express'
 import { userRouter } from './src/routes/userRouter/router.js'
 import { postRouter } from './src/routes/postRouter/router.js'
-dotenv.config({ path: './.env.local' })
 
 const app = express()
 const port = 3002

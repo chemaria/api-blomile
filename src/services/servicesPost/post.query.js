@@ -7,7 +7,7 @@ import connectDb from '../db.connect.js'
 export async function getPost (id) {
   const result = await connectDb(
     {
-      sql: 'SELECT id,id_user,img,tittle,shortdesc,description,likes,datePublish,visible FROM posts WHERE id= ?',
+      sql: 'SELECT id,id_user,img,tittle,shortdesc,description,likes,datePublish,visible FROM posts WHERE id=?',
       params: id
     })
   return result
