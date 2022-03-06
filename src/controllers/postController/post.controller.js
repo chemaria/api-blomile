@@ -1,6 +1,6 @@
 import * as postService from '../../services/servicesPost/post.query'
 
-export async function get (req, res, next) {
+export async function getPost (req, res, next) {
   try {
     res.json(postService.getPost(req.query.id))
   } catch (error) {
@@ -8,7 +8,14 @@ export async function get (req, res, next) {
     next(error)
   }
 }
-
+export async function getAllPosts (req, res, next) {
+  try {
+    res.json(postService.getAllPosts())
+  } catch (error) {
+    console.error('error getting posts data', error.message)
+    next(error)
+  }
+}
 export async function create (req, res, next) {
   try {
     res.json(postService.createPost(req.body))

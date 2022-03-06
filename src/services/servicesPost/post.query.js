@@ -4,13 +4,19 @@ import connectDb from '../db.connect'
  * @param {*} param0
  * @returns
  */
-export async function getPost (id = null) {
-  const query =
-    !id
-      ? 'SELECT id,id_user,img,tittle,shortdesc,description,likes,datePublish,visible FROM posts ORDER BY datePublish'
-      : 'SELECT id,id_user,img,tittle,shortdesc,description,likes,datePublish,visible FROM posts WHERE id= ?'
-
-  const result = await connectDb({ sql: query, params: id })
+export async function getPost (id) {
+  const result = await connectDb(
+    {
+      sql: 'SELECT id,id_user,img,tittle,shortdesc,description,likes,datePublish,visible FROM posts WHERE id= ?',
+      params: id
+    })
+  return result
+}
+export async function getAllPosts () {
+  const result = await connectDb(
+    {
+      sql: 'SELECT id,id_user,img,tittle,shortdesc,description,likes,datePublish,visible FROM posts'
+    })
   return result
 }
 /**
