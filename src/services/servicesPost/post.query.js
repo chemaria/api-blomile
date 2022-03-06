@@ -14,6 +14,7 @@ export async function getPost (id) {
 }
 export async function getAllPosts () {
   const result = await connectDb(
+
     {
       sql: 'SELECT id,id_user,img,tittle,shortdesc,description,likes,datePublish,visible FROM posts'
     })

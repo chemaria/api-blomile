@@ -2,7 +2,7 @@ import * as postService from '../../services/servicesPost/post.query.js'
 
 export async function getPost (req, res, next) {
   try {
-    res.json(postService.getPost(req.query.id))
+    res.json(await postService.getPost(req.query.id))
   } catch (error) {
     console.error('error getting posts data', error.message)
     next(error)
@@ -10,7 +10,7 @@ export async function getPost (req, res, next) {
 }
 export async function getAllPosts (req, res, next) {
   try {
-    res.json(postService.getAllPosts())
+    res.json(await postService.getAllPosts())
   } catch (error) {
     console.error('error getting posts data', error.message)
     next(error)
@@ -18,7 +18,7 @@ export async function getAllPosts (req, res, next) {
 }
 export async function create (req, res, next) {
   try {
-    res.json(postService.createPost(req.body))
+    res.json(await postService.createPost(req.body))
   } catch (error) {
     console.error('error getting posts data', error.message)
     next(error)
@@ -26,7 +26,7 @@ export async function create (req, res, next) {
 }
 export async function update (req, res, next) {
   try {
-    res.json(postService.updatePost(req.body))
+    res.json(await postService.updatePost(req.body))
   } catch (error) {
     console.error('error getting posts data', error.message)
     next(error)
@@ -34,7 +34,7 @@ export async function update (req, res, next) {
 }
 export async function remove (req, res, next) {
   try {
-    res.json(postService.deletePost(req.query.id))
+    res.json(await postService.deletePost(req.query.id))
   } catch (error) {
     console.error('error getting posts data', error.message)
     next(error)
