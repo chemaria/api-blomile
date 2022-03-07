@@ -1,7 +1,8 @@
-import { param } from 'express/lib/request'
-import connectDb from '../../services/db.connect'
+import connectDb from '../../services/db.connect.js'
+import bcrypt from 'bcrypt'
 
-export async function userLogin (req, res, next) {
+export default async function userLogin (req, res, next) {
   const { user, password } = req.body
   const [result] = await connectDb({ sql: 'SELECT id,password FROM users WHERE username = ?', params: user })
+  console.log(result)
 }
