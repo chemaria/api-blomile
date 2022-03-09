@@ -5,7 +5,7 @@ import { postRouter } from './src/routes/postRouter/router.js'
 import cors from 'cors'
 import helmet from 'helmet'
 const app = express()
-const port = 3002
+const port = 80
 
 app.use(helmet())
 app.use(cors({
