@@ -5,7 +5,6 @@ import { generalConfig } from '../../configs/config.general.js'
 import cookie from 'cookie'
 
 export default async function userLogin (req, res, next) {
-  console.log('pasa por aqui')
   const { user, password } = req.body
   if (!(user && password)) { return res.status(401).json('error invalid user or password') }
 
@@ -34,6 +33,4 @@ export default async function userLogin (req, res, next) {
   res.setHeader('Set-Cookie', cookie.serialize('jwt', token, jwtData.cookieOptions))
   res.status(201).send('ok login')
   res.end()
-  const cookie1 = cookie.jwt
-  console.log('este es el token' + token + ' esta es la cookie ' + cookie1)
 }

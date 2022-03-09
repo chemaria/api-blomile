@@ -7,4 +7,3 @@ export const configDb = {
   database: process.env.MYSQL_DB,
   port: process.env.MYSQL_PORT
 }
-console.log(configDb)
