@@ -1,10 +1,10 @@
-import connectDb from '../db.connect.js'
+const connectDb = require('../db.connect.js')
 /**
  *
  * @param {*} id
  * @returns
  */
-export async function getUserBy (userby) {
+async function getUserBy (userby) {
   const query = {
     id: 'SELECT username, role, password FROM users WHERE id = ?',
     username: 'SELECT id, password, role FROM users WHERE username = ?'
@@ -18,7 +18,7 @@ export async function getUserBy (userby) {
  * @param {*} param0
  * @returns
  */
-export async function createUser ({ username, password, role, avatar }) {
+async function createUser ({ username, password, role, avatar }) {
   const result = await connectDb(
     {
       sql: `INSERT INTO users (username, password, role, avatar) 
@@ -33,7 +33,7 @@ export async function createUser ({ username, password, role, avatar }) {
  * @param {*} id
  * @returns
  */
-export async function deleteUser (id) {
+async function deleteUser (id) {
   const result = await connectDb({ sql: 'DELETE FROM users where id=?', params: [id] })
   return result
 }
@@ -42,7 +42,7 @@ export async function deleteUser (id) {
  * @param {*} param0
  * @returns
  */
-export async function updateUser ({ username, password, role, avatar, id }) {
+async function updateUser ({ username, password, role, avatar, id }) {
   const result = await connectDb(
     {
       sql: 'UPDATE users SET username = ?, password = ?, role = ?, avatar = ? WHERE id = ?',
@@ -50,3 +50,4 @@ export async function updateUser ({ username, password, role, avatar, id }) {
     })
   return result
 }
+module.exports = {updateUser,deleteUser,createUser,getUserBy}

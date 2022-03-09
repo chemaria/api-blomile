@@ -1,6 +1,6 @@
-import * as userService from '../../services/servicesUser/user.query.js'
+const userService = require('../../services/servicesUser/user.query.js') 
 
-export async function get (req, res, next) {
+async function get (req, res, next) {
   try {
     res.json(await userService.getUserBy(req.query))
   } catch (error) {
@@ -8,8 +8,7 @@ export async function get (req, res, next) {
     next(error)
   }
 }
-
-export async function create (req, res, next) {
+async function create (req, res, next) {
   try {
     res.json(await userService.createUser(req.body))
   } catch (error) {
@@ -17,7 +16,7 @@ export async function create (req, res, next) {
     next(error)
   }
 }
-export async function update (req, res, next) {
+async function update (req, res, next) {
   try {
     res.json(await userService.updateUser(req.body))
   } catch (error) {
@@ -25,7 +24,7 @@ export async function update (req, res, next) {
     next(error)
   }
 }
-export async function remove (req, res, next) {
+async function remove (req, res, next) {
   try {
     res.json(await userService.deleteUser(req.query.id))
   } catch (error) {
@@ -33,3 +32,4 @@ export async function remove (req, res, next) {
     next(error)
   }
 }
+ module.exports = {remove,update,create,get}

@@ -1,10 +1,10 @@
-import connectDb from '../../services/db.connect.js'
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
-import { generalConfig } from '../../configs/config.general.js'
-import cookie from 'cookie'
+const connectDb = require('../../services/db.connect.js')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const generalConfig = require('../../configs/config.general.js')
+const cookie = require('cookie')
 
-export default async function userLogin (req, res, next) {
+async function userLogin (req, res, next) {
   const { user, password } = req.body
   if (!(user && password)) { return res.status(401).json('error invalid user or password') }
 
@@ -34,3 +34,5 @@ export default async function userLogin (req, res, next) {
   res.status(201).send('ok login')
   res.end()
 }
+
+module.exports = userLogin;
