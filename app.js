@@ -3,10 +3,11 @@ import express from 'express'
 import { userRouter } from './src/routes/userRouter/router.js'
 import { postRouter } from './src/routes/postRouter/router.js'
 import cors from 'cors'
-
+import helmet from 'helmet'
 const app = express()
 const port = 3002
 
+app.use(helmet())
 app.use(cors({
   origin: 'http://localhost:3000',
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']

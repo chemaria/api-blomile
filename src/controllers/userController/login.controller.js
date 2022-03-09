@@ -24,14 +24,15 @@ export default async function userLogin (req, res, next) {
       id: result.id
     },
     tokenExpires: { expiresIn: '30d' },
-    cookieData: {
-      maxAge: 60 * 60 * 24 * 7
+    cookieOptions: {
+      maxAge: 60 * 60 * 24 * 7,
+      domain: 'http://localhost:3000'
     }
   }
   const token = await jwt.sign(jwtData.userData, generalConfig.jwt_secret, jwtData.tokenExpires)
 
-  res.setHeader('Set-Cookie', cookie.serialize('jwt', token, jwtData.cookieData)).status(201)
-  res.status(201)
+  res.setHeader('Set-Cookie', cookie.serialize('jwt', token, jwtData.cookieOptions))
+  res.status(201).send('ok login')
   res.end()
   const cookie1 = cookie.jwt
   console.log('este es el token' + token + ' esta es la cookie ' + cookie1)
