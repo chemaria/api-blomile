@@ -1,11 +1,11 @@
-import bodyParser from 'body-parser'
-import express from 'express'
-import { userRouter } from './src/routes/userRouter/router.js'
-import { postRouter } from './src/routes/postRouter/router.js'
-import cors from 'cors'
-import helmet from 'helmet'
+const express = require('express')
+const { userRouter } = require('./src/routes/userRouter/router.js')
+const { postRouter } = require('./src/routes/postRouter/router.js')
+const cors = require('cors')
+const helmet = require('helmet')
+const bodyParser = require('body-parser')
 const app = express()
-const port = 80
+const port = 3002
 
 app.use(helmet())
 app.use(cors({
