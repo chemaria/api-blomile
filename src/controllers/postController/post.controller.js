@@ -1,5 +1,5 @@
 const postService = require('../../services/servicesPost/post.query.js')
-const {updatePost,deletePost,createPost,getAllPosts,getPost} = postService
+const { updatePost, deletePost, createPost, getAllPosts, getPost } = postService
 async function get (req, res, next) {
   try {
     res.json(await getPost(req.params.id))
@@ -41,4 +41,4 @@ async function remove (req, res, next) {
   }
 }
 
-module.exports = {remove,update,create,getAll,get}
+module.exports = { remove, update, create, getAll, get }

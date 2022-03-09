@@ -1,4 +1,4 @@
-const userService = require('../../services/servicesUser/user.query.js') 
+const userService = require('../../services/servicesUser/user.query.js')
 
 async function get (req, res, next) {
   try {
@@ -32,4 +32,4 @@ async function remove (req, res, next) {
     next(error)
   }
 }
- module.exports = {remove,update,create,get}
+module.exports = { remove, update, create, get }

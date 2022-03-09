@@ -1,8 +1,8 @@
 const express = require('express')
-const userController = require('../../controllers/userController/user.controller.js') 
+const userController = require('../../controllers/userController/user.controller.js')
 const userLogin = require('../../controllers/userController/login.controller.js')
 const userRouter = express.Router()
-const {get,create,update,remove} = userController
+const { get, create, update, remove } = userController
 
 userRouter.get('/:id', get)
 // list all users?

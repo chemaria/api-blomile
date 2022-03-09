@@ -1,4 +1,4 @@
-require('dotenv/config.js') 
+require('dotenv/config.js')
 
 const configDb = {
   host: process.env.MYSQL_IP,

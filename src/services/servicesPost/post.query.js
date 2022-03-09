@@ -1,4 +1,4 @@
-const connectDb = require ('../db.connect.js')
+const connectDb = require('../db.connect.js')
 /**
  *
  * @param {*} param0
@@ -57,4 +57,4 @@ async function updatePost ({ idUser, img, tittle, description, datePublish, like
     })
   return result
 }
-module.exports = {updatePost,deletePost,createPost,getAllPosts,getPost}
+module.exports = { updatePost, deletePost, createPost, getAllPosts, getPost }

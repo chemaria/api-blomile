@@ -50,4 +50,4 @@ async function updateUser ({ username, password, role, avatar, id }) {
     })
   return result
 }
-module.exports = {updateUser,deleteUser,createUser,getUserBy}
+module.exports = { updateUser, deleteUser, createUser, getUserBy }

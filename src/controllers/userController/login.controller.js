@@ -35,4 +35,4 @@ async function userLogin (req, res, next) {
   res.end()
 }
 
-module.exports = userLogin;
+module.exports = userLogin

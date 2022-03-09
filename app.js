@@ -1,5 +1,5 @@
 const express = require('express')
-const userRouter  = require('./src/routes/userRouter/router.js')
+const userRouter = require('./src/routes/userRouter/router.js')
 const postRouter = require('./src/routes/postRouter/router.js')
 const cors = require('cors')
 const helmet = require('helmet')
