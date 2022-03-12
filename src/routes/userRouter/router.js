@@ -3,13 +3,12 @@ const userController = require('../../controllers/userController/user.controller
 const userLogin = require('../../controllers/userController/login.controller.js')
 const userRouter = express.Router()
 const { get, create, update, remove } = userController
+const userAuth = require('../../middlewares/userAuth.js')
 
-userRouter.get('/:id', get)
-// list all users?
-// router.get('/user/', userController.)
-userRouter.post('/', create)
-userRouter.post('/login', userLogin)
-userRouter.put('/', update)
-userRouter.delete('/', remove)
+userRouter.get('/:id', userAuth, get)
+userRouter.post('/', userAuth, create)
+userRouter.post('/login', userAuth, userLogin)
+userRouter.put('/', userAuth, update)
+userRouter.delete('/', userAuth, remove)
 
 module.exports = userRouter
