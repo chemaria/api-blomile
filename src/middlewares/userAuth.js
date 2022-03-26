@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken')
 const config = require('../configs/config.general')
 
 module.exports = (req, res, next) => {
+  console.log(req)
+  throw new Error()
   const authorization = req.get('authorization')
   let token = ''
 
