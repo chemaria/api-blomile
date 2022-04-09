@@ -7,7 +7,7 @@ const userAuth = require('../../middlewares/userAuth.js')
 
 userRouter.get('/:id', userAuth, get)
 userRouter.post('/', userAuth, create)
-userRouter.post('/login', userAuth, userLogin)
+userRouter.post('/login', userLogin)
 userRouter.put('/', userAuth, update)
 userRouter.delete('/', userAuth, remove)
 
