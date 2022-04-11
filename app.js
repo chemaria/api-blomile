@@ -7,11 +7,17 @@ const helmet = require('helmet')
 const bodyParser = require('body-parser')
 const app = express()
 const port = 3002
-
+const configEnv = require('./src/configs/config.general')
 app.use(helmet())
+
+const __NODE_ENV__ =
+  configEnv.node_env === 'development'
+    ? 'http://blomile.com:3000'
+    : 'https://blomile.com'
+
 app.use(
   cors({
-    origin: 'http://blomile.com:3000',
+    origin: __NODE_ENV__,
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   })
 )
