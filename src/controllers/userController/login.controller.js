@@ -2,8 +2,9 @@ const connectDb = require('../../services/db.connect.js')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const generalConfig = require('../../configs/config.general.js')
+const configEnv = require('../../configs/config.general.js')
 
-async function userLogin(req, res, next) {
+async function userLogin(req, res) {
   const { user, password } = req.body
   if (!(user && password)) {
     return res.status(401).json('error invalid user or password')
@@ -22,6 +23,9 @@ async function userLogin(req, res, next) {
     return res.status(401).json('error invalid user or password')
   }
 
+  const __ORIGIN__ =
+    configEnv.node_env === 'development' ? 'localhost' : 'blomile.com'
+
   const jwtData = {
     userData: {
       username: user,
@@ -29,9 +33,11 @@ async function userLogin(req, res, next) {
     },
     tokenExpires: { expiresIn: '30d' },
     cookieOptions: {
-      maxAge: 60 * 60 * 24 * 7,
-      domain: 'blomile.com',
+      maxAge: 14 * 24 * 60 * 60 * 1000,
+      domain: __ORIGIN__,
       secure: true,
+      httpOnly: false,
+      sameSite: 'none',
     },
   }
   const token = await jwt.sign(
@@ -39,15 +45,7 @@ async function userLogin(req, res, next) {
     generalConfig.jwt_secret,
     jwtData.tokenExpires
   )
-
-  // res.setHeader(
-  //   'Set-Cookie',
-  //   cookie.serialize('jwt', token, jwtData.cookieOptions)
-  // )
-  res.cookie('jwt', token, jwtData.cookieOptions)
-
-  res.status(201).send('ok login')
-  console.log(token)
+  res.cookie('jwt', token, jwtData.cookieOptions).send('ok')
 }
 
 module.exports = userLogin
