@@ -31,6 +31,7 @@ async function userLogin(req, res, next) {
     cookieOptions: {
       maxAge: 60 * 60 * 24 * 7,
       domain: 'blomile.com',
+      secure: true,
     },
   }
   const token = await jwt.sign(
