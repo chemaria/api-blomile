@@ -2,7 +2,6 @@ const connectDb = require('../../services/db.connect.js')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const generalConfig = require('../../configs/config.general.js')
-const cookie = require('cookie')
 
 async function userLogin(req, res, next) {
   const { user, password } = req.body
@@ -31,7 +30,7 @@ async function userLogin(req, res, next) {
     tokenExpires: { expiresIn: '30d' },
     cookieOptions: {
       maxAge: 60 * 60 * 24 * 7,
-      domain: '.blomile.com',
+      domain: 'blomile.com',
     },
   }
   const token = await jwt.sign(
@@ -40,10 +39,11 @@ async function userLogin(req, res, next) {
     jwtData.tokenExpires
   )
 
-  res.setHeader(
-    'Set-Cookie',
-    cookie.serialize('jwt', token, jwtData.cookieOptions)
-  )
+  // res.setHeader(
+  //   'Set-Cookie',
+  //   cookie.serialize('jwt', token, jwtData.cookieOptions)
+  // )
+  res.cookie('jwt', token, jwtData.cookieOptions)
 
   res.status(201).send('ok login')
   console.log(token)

@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = 3002
 const configEnv = require('./src/configs/config.general')
+const cookieParser = require('cookie-parser')
 app.use(helmet())
 
 const __NODE_ENV__ =
@@ -21,6 +22,7 @@ app.use(
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   })
 )
+app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
