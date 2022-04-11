@@ -31,8 +31,7 @@ async function userLogin(req, res, next) {
     tokenExpires: { expiresIn: '30d' },
     cookieOptions: {
       maxAge: 60 * 60 * 24 * 7,
-      domain: '127.0.0.1',
-      secure: 'false',
+      domain: '.blomile.com',
     },
   }
   const token = await jwt.sign(
@@ -41,11 +40,11 @@ async function userLogin(req, res, next) {
     jwtData.tokenExpires
   )
 
-  // res.setHeader(
-  //   'Set-Cookie',
-  //   cookie.serialize('jwt', String(token), jwtData.cookieOptions)
-  // )
-  res.cookie('jwt', String(token), jwtData.cookieOptions)
+  res.setHeader(
+    'Set-Cookie',
+    cookie.serialize('jwt', token, jwtData.cookieOptions)
+  )
+
   res.status(201).send('ok login')
   console.log(token)
 }
