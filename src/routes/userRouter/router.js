@@ -10,5 +10,8 @@ userRouter.post('/', userAuth, create)
 userRouter.post('/login', userLogin)
 userRouter.put('/', userAuth, update)
 userRouter.delete('/', userAuth, remove)
+userRouter.post('/userauth', userAuth, (req, res) => {
+  res.status(201).end()
+})
 
 module.exports = userRouter
